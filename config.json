@@ -1,0 +1,21 @@
+{
+  "test": {
+    "keywords": [
+      "keyword1",
+      "keyword2",
+      "keyword3",
+      "keyword4",
+      "keyword5"
+    ],
+    "blacklisted_keywords": [
+      "blacklisted_keyword1",
+      "blacklisted_keyword2",
+      "blacklisted_keyword3",
+      "blacklisted_keyword4",
+      "blacklisted_keyword5"
+    ],
+    "redditors": [
+      "test_redditor_1"
+    ]
+  }
+}
