@@ -1,7 +1,12 @@
 import json
 import os
 import praw
-from env import Config
+
+# Try to import our config class, otherwise just stub it so it doesn't accidentally break
+try:
+    from env import Config
+except ImportError:
+    from stub_env import Config
 
 class Bot:
 
