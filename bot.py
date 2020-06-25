@@ -46,12 +46,8 @@ class Bot:
             blacklisted_keywords = subreddit_data['blacklisted_keywords']
             keywords = subreddit_data['keywords']
 
-            # Call lower() on submission title and selftext once rather than for every keyword check
-            submission_title = submission.title.lower()
-            # If submission isn't a self post, we can ignore it by setting to empty string
-            submission_selftext = submission.selftext.lower() if submission.is_self else ''
-            # Concat these two to make searching easier
-            target_text = ' '.join([submission_title, submission_selftext])
+            # Join submission and title into a target_text variable to make searching easier
+            target_text = ' '.join([submission.title, submission.selftext]).lower()
 
             # Intentionally check blacklist first, we will always search for all blacklisted keywords,
             # but won't need to search for all keywords (potentially)
