@@ -55,7 +55,10 @@ class Bot:
                 redditors = subreddit_data['redditors']
                     
                 for redditor in redditors:
-                    self.send_message(submission, redditor)
+                    if not submission.author.name == redditor:
+                        self.send_message(submission, redditor)
+                    else:
+                        print('Skipping message, submission author {} is the same as the target user.'.format(redditor))
 
     def has_keyword(self, target_text, keywords):
         # Check if a keyword is in the target
