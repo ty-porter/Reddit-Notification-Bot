@@ -46,12 +46,15 @@ class Bot:
             blacklisted_keywords = subreddit_data['blacklisted_keywords']
             keywords = subreddit_data['keywords']
 
+            # Let the bot notify on all posts if keywords are empty
+            notify_on_all_posts = len(keywords) < 1
+
             # Join submission and title into a target_text variable to make searching easier
             target_text = ' '.join([submission.title, submission.selftext]).lower()
 
             # Intentionally check blacklist first, we will always search for all blacklisted keywords,
             # but won't need to search for all keywords (potentially)
-            if not self.has_keyword(target_text, blacklisted_keywords) and self.has_keyword(target_text, keywords):
+            if not self.has_keyword(target_text, blacklisted_keywords) and (notify_on_all_posts or self.has_keyword(target_text, keywords)):
                 # Message the redditors from the config if this check passes
                 redditors = subreddit_data['redditors']
                     
